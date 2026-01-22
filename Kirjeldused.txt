@@ -1,0 +1,6 @@
+Vastutab süsteemi laiade haldusülesannete eest, sealhulgas kasutajate haldus, turvaseadistused ja süsteemi konfigureerimine.
+Pakub tehnilist tuge kasutajatele, lahendab probleeme ja annab juhiseid süsteemi kasutamiseks.
+Loob ja arendab tarkvara, tegeleb süsteemi arendusprojektidega.
+Vastutab ettevõtte finantsjuhtimise eest, tegeleb eelarvete, aruandluse ja finantsanalüüsiga.
+Haldab süsteemi turvaseadeid, teostab turvaauditit ja reageerib turvaintsidentidele.
+Tavaline süsteemi kasutaja, kes kasutab süsteemi vastavalt oma rollile ja vastutustele.
