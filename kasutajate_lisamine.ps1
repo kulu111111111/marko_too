@@ -1,3 +1,5 @@
+#Requires -RunAsAdministrator
+
 # Kontroll admin õiguste jaoks
 If (-NOT ([Security.Principal.WindowsPrincipal] `
     [Security.Principal.WindowsIdentity]::GetCurrent()
@@ -13,7 +15,7 @@ If (!(Test-Path $csvPath)) {
     Exit
 }
 
-$users = Import-Csv $csvPath
+$users = Import-Csv $csvPath -Delimiter ";"
 
 Write-Host "Vali tegevus:"
 Write-Host "1 - Lisa kõik kasutajad failist"
@@ -29,10 +31,15 @@ If ($choice -eq "1") {
 
     foreach ($user in $users) {
 
-        $username = $user.Username
-        $fullname = "$($user.FirstName) $($user.LastName)"
-        $description = $user.Description
-        $password = ConvertTo-SecureString $user.Password -AsPlainText -Force
+        # Skip empty rows
+        If ([string]::IsNullOrWhiteSpace($user.Nimi) -or [string]::IsNullOrWhiteSpace($user.Kasutajanimi)) {
+            continue
+        }
+
+        $fullname = $user.Nimi.Trim()
+        $username = $user.Kasutajanimi.Trim()
+        $description = $user.Kirjeldus.Trim()
+        $password = ConvertTo-SecureString $user.Parool.Trim() -AsPlainText -Force
 
         # Kasutajanime pikkuse kontroll (Windows max 20)
         If ($username.Length -gt 20) {
